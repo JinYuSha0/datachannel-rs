@@ -35,7 +35,7 @@ fn main() {
         let openssl_root_dir = openssl_artifacts().lib_dir().parent().unwrap();
         cmake_conf.define("OPENSSL_ROOT_DIR", openssl_root_dir.to_path_buf());
         cmake_conf.define("OPENSSL_USE_STATIC_LIBS", "TRUE");
-
+        cmake_conf.define("ANDROID_STL", "c++_static");
         cmake_conf.build();
 
         let profile = cmake_conf.get_profile();
@@ -132,7 +132,7 @@ fn main() {
         if let Ok(openssl_libraries) = env_var_rerun("OPENSSL_LIBRARIES") {
             cmake_conf.define("OPENSSL_LIBRARIES", openssl_libraries);
         }
-
+        cmake_conf.define("ANDROID_STL", "c++_static");
         cmake_conf.build();
 
         // Link dynamic libdatachannel
