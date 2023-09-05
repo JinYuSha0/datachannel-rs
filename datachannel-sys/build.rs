@@ -25,6 +25,7 @@ fn main() {
         cmake_conf.build_target("datachannel-static");
         cmake_conf.out_dir(&out_dir);
 
+        cmake_conf.define("NO_TESTS", "ON");
         cmake_conf.define("NO_WEBSOCKET", "ON");
         cmake_conf.define("NO_EXAMPLES", "ON");
         if !cfg!(feature = "media") {
@@ -118,6 +119,7 @@ fn main() {
         let mut cmake_conf = cmake::Config::new("libdatachannel");
         cmake_conf.out_dir(&out_dir);
 
+        cmake_conf.define("NO_TESTS", "ON");
         cmake_conf.define("NO_WEBSOCKET", "ON");
         cmake_conf.define("NO_EXAMPLES", "ON");
         if !cfg!(feature = "media") {
